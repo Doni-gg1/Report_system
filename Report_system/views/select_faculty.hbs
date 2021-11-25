@@ -1,0 +1,23 @@
+<form action="/getData" method="GET">
+  <label> Год
+    <select name="year">
+      {{#each years}}
+        {{#each this}}
+          <option selected value="{{id_a_year}}">{{p32}}</option>
+        {{/each}}
+      {{/each}}
+    </select>
+  </label>
+  {{#if faculties_status}}
+    <label>Факультет
+      <select name="faculty">
+        {{#each faculties}}
+          {{#each this}}
+            <option value="{{id_faculty}}">{{p23-1}}</option>
+          {{/each}}
+        {{/each}}
+      </select>
+    </label>
+  {{/if}}
+  <input type="submit" />
+</form>

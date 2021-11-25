@@ -1,0 +1,12 @@
+<form action="/getData" method="GET">
+  <label> Год
+    <select name="year">
+      {{#each years}}
+        {{#each this}}
+          <option selected value="{{id_a_year}}">{{{p32}}}</option>
+        {{/each}}
+      {{/each}}
+    </select>
+  </label>
+  <input type="submit" />
+</form>

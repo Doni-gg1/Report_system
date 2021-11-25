@@ -1,0 +1,164 @@
+<form action="/getData" method="GET">
+  <label> Год
+    <select name="year">
+      {{#each years}}
+        <option value="{{id_a_year}}">{{p32}}</option>
+      {{/each}}
+    </select>
+  </label>
+  <label>Факультет
+    <input name="faculty"  type="number" min="1" />
+  </label>
+  <input type="submit" />
+</form>
+
+{{#if found}}
+  <div style="color: #000080; font-weight: 550;" class="div">
+    <p>МИНИСТЕРСТВО ОБРАЗОВАНИЯ И НАУКИ КЫРГЫЗСКОЙ РЕСПУБЛИКИ</p>
+    <p>Кыргызский государственный технический университет им.И.Раззакова </p>
+  </div>
+  <div style="color: #000080; font-weight: 800; font-size: 18px" class="div1">
+    <p>Факультет информацинный технологий</p>
+    <p>Специальность:7104000 Программная инженерия</p>
+  </div>
+  <table align="right" >
+    <tr bgcolor="#F5FFFA" style="color: #191970;">
+      <th colspan="17">Учебный план 2020-21 года. Форма обучения -очная бакалавр</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr bgcolor="#F5FFFA" style="color: #191970;">
+      <th colspan="4">Дисциплина</th>
+      <th>Тип предмета</th>
+      <th>Экз/зач</th>
+      <th>Кафедра</th>
+      <th>Контр. работа</th>
+      <th>Всегоауд.</th>
+      <th>Лк.</th>
+      <th>Лб.</th>
+      <th>Пр.</th>
+      <th>Сем.</th>
+      <th>СРС</th>
+      <th>СРСП</th>
+      <th>Интер. часы</th>
+      <th>РЗР</th>
+      <th>нд/з</th>
+      <th>Всего</th>
+      <th>Кред</th>
+      <th>Кол недель</th>
+
+    </tr>
+
+    {{#each data}}
+      <tr style="color: #191970;">
+        <th colspan="8">{{@key}}</th>
+        <th>704</th>
+        <th>80</th>
+        <th>272</th>
+        <th>352</th>
+        <th>0</th>
+        <th>446</th>
+        <th>0</th>
+        <th>0</th>
+        <th>0</th>
+        <th>0</th>
+        <th>1150</th>
+        <th>33</th>
+        <th>0</th>
+      </tr>
+      {{#each this}}
+
+        <tr>
+          <td style="color: #5708A7;">{{descGroupNum}}</td>
+          <td style="color: #2F4F4F;">{{s_component}}</td>
+          <td style="color: #006400;">{{s_kind}}</td>
+          <td style="color: #5708A7;">{{p34}}</td>
+          <td style="color: #5708A7;">{{v2}}</td>
+          <td style="color: #171769;">{{p30}}</td>
+          <td>{{f1}}</td>
+          <td>{{p45}}</td>
+          <td>{{p54}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>{{seminar}}</td>
+          <td>{{srs}}</td>
+          <td></td>
+          <td></td>
+          <td>{{rzr}}</td>
+          <td></td>
+          <td>0</td>
+          <td>0</td>
+          <td>{{colnedel}}</td>
+        </tr>
+      {{total}}
+      {{/each}}
+      <tr bgcolor="#F0F8FF">
+          <td  colspan="3"></td>
+          <td>Количество зачетов</td>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>{{total}}</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr> <tr bgcolor="#F0F8FF">
+          <td  colspan="3"></td>
+          <td>Количество экзамен</td>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr> <tr bgcolor="#F8F8FF">
+          <td  colspan="3"></td>
+          <td>Недельная нагрузка</td>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+    {{/each}}
+  </table>
+{{else}}
+
+  <h1>Данные не найдены!</h1>
+{{/if}}
