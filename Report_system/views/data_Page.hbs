@@ -1,15 +1,12 @@
-<form action="/getData" method="GET">
-  <label> Год
-    <select name="year">
-      {{#each years}}
-        <option value="{{id_a_year}}">{{p32}}</option>
-      {{/each}}
-    </select>
-  </label>
-  <label>Факультет
-    <input name="faculty"  type="number" min="1" />
-  </label>
-  <input type="submit" />
+<form action="/getTable">
+  <select name="speciality">
+    {{log speciality}}
+    <option>Выберите специальность</option>
+    {{#each speciality}}
+      <option value="{{id_speciality}}">{{p25_2_fe_kaf}}</option>
+    {{/each}}
+  </select>
+  <input type="submit"/>
 </form>
 
 {{#if found}}

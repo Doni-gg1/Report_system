@@ -1,0 +1,9 @@
+<form action="/getEducForm" method="get">
+    <select name="faculty">
+        <option selected>Выберите Факультет</option>
+        {{#each faculties}}
+            <option  value="{{id_faculty}}">{{p23-1}}</option>
+        {{/each}}
+    </select>
+    <input type="submit" />
+</form>

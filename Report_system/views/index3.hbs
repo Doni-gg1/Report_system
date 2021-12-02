@@ -1,0 +1,11 @@
+<form action="/getSpeciality" method="GET">
+  <label> Форма обучения
+    <select name="educForm">
+      <option selected>Выберите форму обучения</option>
+      {{!-- {{log educForms}} --}}
+      {{#each educForms}}
+          <option value="{{id_f_educ}}">{{p108}}</option>
+      {{/each}}
+    </select>
+  <input type="submit" />
+</form>
