@@ -5,6 +5,7 @@ const handleBars = require('hbs')
 var sql = require('mssql');
 const helpers = require('handlebars-helpers');
 const math = helpers.math();
+const stringify = require('quick-stable-stringify');
 // console.log(handleBars.registerHelper)
 
 handleBars.registerHelper('add', math.add);
@@ -134,7 +135,8 @@ router.get('/getTable', async function (req, res) {
       console.log(OBJA[i])
     }
     // res.render('data_Page', { data: OBJA, found: true, speciality: speciality_data });
-    res.send(OBJA)
+    let obj = stringify(OBJA)
+    res.send(JSON.parse(obj))
   } else {
     console.log("Error 404");
     // res.render('data_Page', {found: false})
