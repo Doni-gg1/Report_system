@@ -14,6 +14,9 @@ handleBars.registerHelper('log', math.log);
 let year_id;
 let faculty_id;
 let educForm_id;
+let dataB;
+
+
 
 router.get('/getData', async function (req, res) {
   try {
@@ -78,7 +81,7 @@ router.get('/getSpeciality', async function (req, res) {
   HAVING      (dbo.educ_sh.id_a_year = ${req.query.year}) AND (dbo.specialityV.id_f_educ = ${req.query.educForm}) AND (dbo.specialityV.id_faculty = ${req.query.faculty})
   `)
 
-  console.log(req.query)
+  // console.log(req.query)
   speciality_data = speciality.recordsets[0]
   // res.render('data_Page', {speciality: speciality.recordsets[0]})
   res.send(speciality.recordsets[0])
@@ -126,22 +129,28 @@ router.get('/getTable', async function (req, res) {
     
     return rv
   }, Object.create(null));
-  console.log(resultA)
+  // console.log(resultA)
 
   const OBJA = JSON.parse(JSON.stringify(resultA))
 
   if (Object.keys(OBJA).length) {
     for(let i in OBJA){
-      console.log(OBJA[i])
+      // console.log(OBJA[i])
     }
     // res.render('data_Page', { data: OBJA, found: true, speciality: speciality_data });
     let obj = stringify(OBJA)
+    // dataB = obj
     res.send(JSON.parse(obj))
   } else {
     console.log("Error 404");
     // res.render('data_Page', {found: false})
     res.send('error')
   }
+})
+
+router.get('/', async function(req, res){
+  res.render('layout')
+
 })
 
 
