@@ -196,12 +196,14 @@ function showTables(data_of_table) {
         ready_array.push(total[i])
     }
     
-    let template = Handlebars.compile(document.querySelector('#template').innerHTML);
-
-    let filled = template(data_of_table);
-    document.querySelector('#root').innerHTML = filled;
-
-    // console.log(data_of_table);
+    let template = ``;
+     for(let i in data_of_table){
+        data_of_table[i].forEach(item => {
+            template = `
+            
+            `
+        })
+     }
     // let elems = document.getElementsByClassName('total_exam');
     // console.log(elems)
     // for (let i in ready_array) {
