@@ -1,4 +1,149 @@
-// let root = document.querySelector('#root');
+let template = Handlebars.compile(`
+<div style="color: #000080; font-weight: 550;" class="div">
+<p>МИНИСТЕРСТВО ОБРАЗОВАНИЯ И НАУКИ КЫРГЫЗСКОЙ РЕСПУБЛИКИ</p>
+<p>Кыргызский государственный технический университет им.И.Раззакова </p>
+</div>
+<div style="color: #000080; font-weight: 800; font-size: 18px" class="div1">
+<p>Факультет информацинный технологий</p>
+<p>Специальность:7104000 Программная инженерия</p>
+</div>
+<table align="right" cellpadding="5">
+<tr bgcolor="#F5FFFA" style="color: #191970;">
+  <th colspan="17">Учебный план 2020-21 года. Форма обучения -очная бакалавр</th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th></th>
+</tr>
+<tr bgcolor="#F5FFFA" style="color: #191970;">
+  <th colspan="4">Дисциплина</th>
+  <th>Тип предмета</th>
+  <th>Экз/зач</th>
+  <th>Кафедра</th>
+  <th>Контр. работа</th>
+  <th>Всегоауд.</th>
+  <th>Лк.</th>
+  <th>Лб.</th>
+  <th>Пр.</th>
+  <th>Сем.</th>
+  <th>СРС</th>
+  <th>СРСП</th>
+  <th>Интер. часы</th>
+  <th>РЗР</th>
+  <th>нд/з</th>
+  <th>Всего</th>
+  <th>Кред</th>
+  <th>Кол недель</th>
+</tr>
+{{#each this}}
+  <tr style="color: #191970;">
+    <th colspan="8">{{@key}}</th>
+    <th>704</th>
+    <th>80</th>
+    <th>272</th>
+    <th>352</th>
+    <th>0</th>
+    <th>446</th>
+    <th>0</th>
+    <th>0</th>
+    <th>0</th>
+    <th>0</th>
+    <th>1150</th>
+    <th>33</th>
+    <th>0</th>
+  </tr>
+  {{#each this}}
+
+    <tr>
+      <td style="color: #5708A7;">{{descGroupNum}}</td>
+      <td style="color: #2F4F4F;">{{s_component}}</td>
+      <td style="color: #006400;">{{s_kind}}</td>
+      <td style="color: #5708A7;">{{p34}}</td>
+      <td style="color: #5708A7;">{{v2}}</td>
+      <td class='exams_{{id_semester}}' style="color: #171769;">{{p30}}</td>
+      <td>{{f1}}</td>
+      <td>{{p45}}</td>
+      <td>{{p54}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>{{seminar}}</td>
+      <td>{{srs}}</td>
+      <td></td>
+      <td></td>
+      <td>{{rzr}}</td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>{{colnedel}}</td>
+    </tr>
+  {{/each}}
+    {{log view}}
+  <tr bgcolor="#F0F8FF">
+      <td  colspan="3"></td>
+      <td>Количество зачетов</td>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr> <tr bgcolor="#F0F8FF">
+      <td  colspan="3"></td>
+      <td>Количество экзамен</td>
+      <th></th>
+      <th class="total_exam"></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr> <tr bgcolor="#F8F8FF">
+      <td  colspan="3"></td>
+      <td>Недельная нагрузка</td>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+{{/each}}
+</table>
+`);
+let root = document.querySelector('#root');
 // let year = document.querySelector(".year");
 // let faculty = document.querySelector(".faculty");
 // let educForm = document.querySelector(".educForm");
@@ -196,20 +341,23 @@ function showTables(data_of_table) {
         ready_array.push(total[i])
     }
     
-    let template = ``;
-     for(let i in data_of_table){
-        data_of_table[i].forEach(item => {
-            template = `
-            
-            `
-        })
-     }
-    // let elems = document.getElementsByClassName('total_exam');
-    // console.log(elems)
-    // for (let i in ready_array) {
-        //     console.log(elems);
-        //     elems[i].innerHTML = ready_array[i];
-        // }
+    compileToHbs(data_of_table)
+    let elems = document.getElementsByClassName('total_exam');
+    console.log(elems)
+    for (let i in ready_array) {
+            console.log(elems);
+            elems[i].innerHTML = ready_array[i];
+        }
+
     
+    }
+
+
+    function compileToHbs(data){
+        console.log(data);
+        let filled = template(data);
+        console.log(filled);
+        // return;
+        root.innerHTML = filled;
     }
     getElems();
